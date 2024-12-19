@@ -9,23 +9,28 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir('testingframework') {
                     sh 'mvn clean compile'
-                }
+
             }
         }
         stage('Test') {
             steps {
-                dir('testingframework') {
                     sh 'mvn test'
-                }
+
             }
+            post {
+                            success {
+                                echo "Unit tests completed successfully"
+                            }
+                            failure {
+                                echo "Unit tests failed"
+                            }
+                        }
         }
         stage('Package') {
             steps {
-                dir('testingframework') {
                     sh 'mvn package'
-                }
+
             }
         }
     }
