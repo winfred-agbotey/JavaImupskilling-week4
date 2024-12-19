@@ -10,21 +10,21 @@ pipeline {
         stage('Build') {
             steps {
                 dir('TestingFrameworks') {
-                    sh 'mvnw.cmd clean compile'
+                    sh 'mvn clean compile'
                 }
             }
         }
         stage('Test') {
             steps {
                 dir('TestingFrameworks') {
-                    sh 'mvnw.cmd test'
+                    sh 'mvn test'
                 }
             }
         }
         stage('Package') {
             steps {
                 dir('TestingFrameworks') {
-                    sh 'mvnw.cmd package'
+                    sh 'mvn package'
                 }
             }
         }
